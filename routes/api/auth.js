@@ -1,11 +1,8 @@
 const express = require("express");
-const { auth } = require("../../controllers/auth");
+const { signup } = require("../../controllers/auth");
 
 const router = express.Router();
 
-router.post("/login", async (req, res, next) => {
-  const { name, email, password } = req.body;
-  res.json({ message: ` ${name} ${email} ${password}` });
-});
+router.post("/signup", signup);
 
 module.exports = router;
