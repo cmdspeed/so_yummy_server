@@ -10,18 +10,29 @@ const login = async (req, res) => {
 
   if (!user) {
     return res.status(401).json({
-      status: "error",
+      status: "Unauthorized",
       code: 401,
       data: {
         message: "Email or password invalid",
       },
     });
   }
+
+  if (!user.verify) {
+    return res.status(401).json({
+      status: "Unauthorized",
+      code: 401,
+      data: {
+        message: "Email is not verificed!",
+      },
+    });
+  }
+
   const passwordCheck = bcrypt.compareSync(password, user.password);
 
   if (!passwordCheck) {
     return res.status(401).json({
-      status: "error",
+      status: "Unauthorized",
       code: 401,
       data: {
         message: "Email or password invalid",
