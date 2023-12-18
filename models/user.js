@@ -20,7 +20,7 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: true,
-      default: "../assets/img/avatar/avatar.jpg",
+      default: "../assets/img/avatar/avatar.svg",
     },
     token: {
       type: String,
